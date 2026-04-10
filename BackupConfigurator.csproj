@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Output\**" />
+    <EmbeddedResource Remove="Data\Output\**" />
+    <None Remove="Data\Output\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Entities\Configuration.cs~RF1c5381b.TMP" />
+    <None Remove="Logic\Services\ConfigurationService.cs~RF2647118.TMP" />
+    <None Remove="Logic\Services\ConfigurationService.cs~RFd6f8e5.TMP" />
+    <None Remove="Logic\Validators\ConfigurationValidator.cs~RF777ced.TMP" />
+    <None Remove="Logic\Validators\ConfigurationValidator.cs~RFcf1917.TMP" />
+    <None Remove="Presentation\ParekTUI\Canvas.cs~RFe00c04.TMP" />
+    <None Remove="Presentation\Windows\EditWindow.cs~RF22ea250.TMP" />
+    <None Remove="Presentation\Windows\EditWindow.cs~RF250b8ff.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ParekTUI.Core" Version="1.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Include\parek-tui.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
