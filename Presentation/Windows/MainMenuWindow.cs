@@ -33,6 +33,7 @@ namespace BackupConfigurator.Presentation.Windows
                                                        SplitOrientation.Vertical, SplitDirection.FromEnd, 3);
             _mainSplitContainer.SetBorder(false);
 
+
             // View
             _viewHContainer = new HContainer(0, 0, 0, 0);
             _viewHContainer.SetBorder(false);
@@ -50,11 +51,11 @@ namespace BackupConfigurator.Presentation.Windows
                 _application.SwitchWindow(window);
             });
             _editButton = new Button(0, 0, "EDIT", () => {
-                var index = _configsListBox.GetSelectedIndex() + 1; // Id starts from 1
+                var index = _configsListBox.GetSelectedIndex();
                 if (index <= 0)
                     return;
 
-                var window = new EditWindow(_application, this, _service, index);
+                var window = new EditWindow(_application, this, _service, index + 1); // Id starts from 1
                 window.Submitted += () => { LoadConfigurations(); };
                 _application.SwitchWindow(window);
             });
@@ -70,7 +71,7 @@ namespace BackupConfigurator.Presentation.Windows
             _controlsHContainer.AddWidget(_editButton);
             _controlsHContainer.AddWidget(_loadButton);
             _controlsHContainer.AddWidget(_exitButton);
-
+            
             // Wire up to main layout
             _mainSplitContainer.AddWidget(_viewHContainer);
             _mainSplitContainer.AddWidget(_controlsHContainer);

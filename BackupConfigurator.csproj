@@ -26,13 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ParekTUI.Core" Version="1.0.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Include\parek-tui.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <PackageReference Include="ParekTUI.Core" Version="1.0.8" />
   </ItemGroup>
 
 </Project>
