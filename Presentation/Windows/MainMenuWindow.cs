@@ -20,6 +20,7 @@ namespace BackupConfigurator.Presentation.Windows
 
         private Button _addButton;
         private Button _editButton;
+        private Button _deleteButton;
         private Button _loadButton;
         private Button _exitButton;
 
@@ -52,12 +53,20 @@ namespace BackupConfigurator.Presentation.Windows
             });
             _editButton = new Button(0, 0, "EDIT", () => {
                 var index = _configsListBox.GetSelectedIndex();
-                if (index <= 0)
+                if (index < 0)
                     return;
 
                 var window = new EditWindow(_application, this, _service, index + 1); // Id starts from 1
                 window.Submitted += () => { LoadConfigurations(); };
                 _application.SwitchWindow(window);
+            });
+            _deleteButton = new Button(0, 0, "DELETE", () => {
+                var index = _configsListBox.GetSelectedIndex();
+                if (index < 0)
+                    return;
+
+                _service.Delete(index + 1); // UPDATE INDEXES OF OTHER REPOS
+                LoadConfigurations();
             });
             _loadButton = new Button(0, 0, "LOAD", () => {
                 var window = new LoadWindow(_application, this, _service);
@@ -69,6 +78,7 @@ namespace BackupConfigurator.Presentation.Windows
             });
             _controlsHContainer.AddWidget(_addButton);
             _controlsHContainer.AddWidget(_editButton);
+            _controlsHContainer.AddWidget(_deleteButton);
             _controlsHContainer.AddWidget(_loadButton);
             _controlsHContainer.AddWidget(_exitButton);
             
@@ -82,6 +92,7 @@ namespace BackupConfigurator.Presentation.Windows
             RegisterComponent(_configsListBox);
             RegisterComponent(_addButton);
             RegisterComponent(_editButton);
+            RegisterComponent(_deleteButton);
             RegisterComponent(_loadButton);
             RegisterComponent(_exitButton);
         }
